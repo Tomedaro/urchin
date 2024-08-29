@@ -27,4 +27,4 @@
 
 #define W_C_L &kp LGUI(LCTRL LEFT)
 #define W_C_R &kp LGUI(LCTRL RIGHT)
-#define WIN &kp LGUI
+#define W_I_N &kp LGUI
