@@ -25,3 +25,6 @@
 #define U_WH_L &msc SCRL_LEFT
 #define U_WH_R &msc SCRL_RIGHT
 
+#define W_C_L &kp LGUI(LCTRL LEFT)
+#define W_C_R &kp LGUI(LCTRL RIGHT)
+#define WIN &kp LGUI
