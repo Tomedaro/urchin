@@ -161,9 +161,10 @@ ZMK_MACRO(uc_shift,
 )
 
 // tap: copy | double-tap: cut
+#define HID_KEY_X 0x1B
 ZMK_TAP_DANCE(copy_cut,
     tapping-term-ms = <200>;
-    bindings = <&kp LC(INS)>, <&kp LC(X)>;
+    bindings = <&kp LC(INS)>, <&kp LC(HID_KEY_X)>;
 )
 
 // misc aliases
