@@ -160,10 +160,11 @@ ZMK_MACRO(uc_shift,
              , <&macro_release &mo UNICODE &kp LSHFT>;
 )
 
-// Define the tap dance for copy and cut
+
+// tap: copy | double-tap: cut
 ZMK_TAP_DANCE(copy_cut,
     tapping-term-ms = <200>;
-    bindings = <LC(INS)>, <LC(Z)>;
+    bindings = <&kp LC(INS)>, <&kp LC(Z)>;
 )
 
 // misc aliases
