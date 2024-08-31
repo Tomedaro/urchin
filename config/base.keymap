@@ -160,17 +160,10 @@ ZMK_MACRO(uc_shift,
              , <&macro_release &mo UNICODE &kp LSHFT>;
 )
 
-// Define HID code for the physical X key in QWERTY (as reference)
-#define HID_KEY_X 0x1B
-
-// Define the copy and cut macros
-#define MACRO_COPY &macro_tap &kp LCTRL &kp INSERT
-#define MACRO_CUT &macro_tap &kp LCTRL &kp X
-
 // Define the tap dance for copy and cut
 ZMK_TAP_DANCE(copy_cut,
     tapping-term-ms = <200>;
-    bindings = <MACRO_COPY>, <MACRO_CUT>;
+    bindings = <LC(INS)>, <LC(Z)>;
 )
 
 // misc aliases
