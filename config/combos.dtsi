@@ -14,7 +14,7 @@
 #define HRC_TAB    &hml          LS(LCTRL)      TAB
 #define HRC_BSPC   &hml          LS(LALT)       BSPC
 #define HRC_BSWD   &hml          LG(LS(LALT))   LC(BSPC)
-#define DSK_PREV   &hml          LG(LS)         LG(LC(LEFT))
+#define DSK_PREV   &hml          LG(LSHIFT)     LG(LC(LEFT))
 #define DSK_NEXT   &hml          LS(RALT)       LG(LC(RIGHT))
 
 /* Horizontal combos - left hand */
