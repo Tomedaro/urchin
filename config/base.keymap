@@ -144,7 +144,7 @@ ZMK_TAP_DANCE(td_dash_left,
 
 ZMK_TAP_DANCE(td_dash_right,
     tapping-term-ms = <200>;
-    bindings = <&kp D>, <&kp LA(D)t>;
+    bindings = <&kp D>, <&kp LA(D)>;
 )
 
 
