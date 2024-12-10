@@ -114,6 +114,78 @@ ZMK_HOLD_TAP(thumb_key,
     bindings = <&kp>, <&kp>;
 )
 
+/* GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE*/
+
+// tap: alt | hold: C
+#define ALT_C &thumb_key LALT C
+ZMK_HOLD_TAP(thumb_key,
+    flavor="tap-preferred";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <200>;
+    require-prior-idle-ms = <125>;
+    bindings = <&kp>, <&kp>;
+)
+
+    macros {
+        macro_dash_forward: macro {
+            label = "Dash Forward";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LALT>, <&kp W>;
+        };
+
+        macro_dash_backward: macro {
+            label = "Dash Backward";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LALT>, <&kp S>;
+        };
+
+        macro_dash_left: macro {
+            label = "Dash Left";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LALT>, <&kp A>;
+        };
+
+        macro_dash_right: macro {
+            label = "Dash Right";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LALT>, <&kp D>;
+        };
+    };
+
+
+
+    behaviors {
+        dashUp: behavior = &tap_dance {
+            tapping-term-ms = <200>;
+            bindings = <&kp W>, <&macro_dash_forward>;
+        };
+
+        dashDown: behavior = &tap_dance {
+            tapping-term-ms = <200>;
+            bindings = <&kp S>, <&macro_dash_backward>;
+        };
+
+        dashLeft: behavior = &tap_dance {
+            tapping-term-ms = <200>;
+            bindings = <&kp A>, <&macro_dash_left>;
+        };
+
+        dashRight: behavior = &tap_dance {
+            tapping-term-ms = <200>;
+            bindings = <&kp D>, <&macro_dash_right>;
+        };
+    };
+
+
+
+/* GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE*/
+
+
+
 /* Caps-word, num-word and smart-mouse */
 
 // tap: sticky-shift | shift + tap/ double-tap: caps-word | hold: shift
@@ -235,7 +307,7 @@ ZMK_LAYER(adjust,
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LM     ___           ___           ___           ___           &bootloader     X_MM     &bootloader   &kp C_PREV    &kp C_VOL_DN  &kp C_NEXT    ___             X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &tog STURDY   ___           ___           ___           &sys_reset      X_MB     &sys_reset    ___           ___           ___         &bt BT_CLR_ALL    X_RB
+    X_LB     &tog STURDY   &tog GAME     ___           ___           &sys_reset      X_MB     &sys_reset    ___           ___           ___         &bt BT_CLR_ALL    X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               ___           ___             X_MH     ___           ___                                                       X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
@@ -267,14 +339,28 @@ ZMK_LAYER(mouse,
 
 ZMK_LAYER(game,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT     &kp              &kp Q         &kp W         &kp E         &kp R           X_MT     &kp Y         &kp U         &kp I         &kp O         &kp P           X_RT
+    X_LT     &kp TAB       &kp Q         &kp W         &kp E         &kp R           X_MT     &kp Y         &kp U         &kp I         &kp O         &kp P           X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LM     &kp LSHFT    &kp A         &kp S         &kp D         &kp F           X_MM     &hmr RALT H   &hmr RCTRL J  &hmr RSHFT K  &hmr LALT L   &hmr RGUI SEMICOLON  X_RM
+    X_LM     &kp LSHFT     &kp A         &kp S         &kp D         &kp F           X_MM     &hmr RALT H   &hmr RCTRL J  &hmr RSHFT K  &hmr LALT L   &hmr RGUI SEMICOLON  X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB                   &kp Z         &kp X         &kp C         &kp V           X_MB     &kp N         &kp M         &kp COMMA     &kp DOT       &kp SLASH       X_RB
+    X_LB     &kp LCTRL     &kp Z         &kp X         &kp C         &kp V           X_MB     &kp N         &kp M         &kp COMMA     &kp DOT       &kp SLASH       X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
-    X_LH                                               &lt GMOD SPACE  &lt LOWER TAB   X_MH   &lt RAISE RET  &smart_shft                                               X_RH
+    X_LH                                               &lt GMOD LALT  &lt GMOD SPACE  X_MH    &lt RAISE RET  &smart_shft                                               X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
+
+
+ZMK_LAYER(gmod,
+//╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
+    X_LT     &kp ESC       &kp Q         &kp M         &kp I         &kp J           X_MT     &kp Y         &kp U         &kp I         &kp O         &kp P           X_RT
+//├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
+    X_LM     &kp 1         &kp 2         &kp 3         &kp 4         &kp G           X_MM     &hmr RALT H   &hmr RCTRL J  &hmr RSHFT K  &hmr LALT L   &hmr RGUI SEMICOLON  X_RM
+//├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
+    X_LB     &kp F5        &kp K         &kp B         &kp L         &kp F9          X_MB     &kp N         &kp M         &kp COMMA     &kp DOT       &kp SLASH       X_RB
+//├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
+    X_LH                                               ___           ___             X_MH    &lt RAISE RET  &smart_shft                                               X_RH
+//╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
+)
+
 
 /* vim: set ft=c tw=174: */
