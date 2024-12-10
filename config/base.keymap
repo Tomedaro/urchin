@@ -126,59 +126,43 @@ ZMK_HOLD_TAP(thumb_key,
     bindings = <&kp>, <&kp>;
 )
 
-    macros {
-        macro_dash_forward: macro {
-            label = "Dash Forward";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LALT>, <&kp W>;
-        };
+   
+ZMK_MACRO(dash_forward,
+    bindings = <&kp LALT>, <&kp W>;
+)
 
-        macro_dash_backward: macro {
-            label = "Dash Backward";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LALT>, <&kp S>;
-        };
+ZMK_MACRO(dash_backward,
+    bindings = <&kp LALT>, <&kp S>;
+)
 
-        macro_dash_left: macro {
-            label = "Dash Left";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LALT>, <&kp A>;
-        };
+ZMK_MACRO(dash_left,
+    bindings = <&kp LALT>, <&kp A>;
+)
 
-        macro_dash_right: macro {
-            label = "Dash Right";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LALT>, <&kp D>;
-        };
-    };
+ZMK_MACRO(dash_right,
+    bindings = <&kp LALT>, <&kp D>;
+)
 
 
+ZMK_TAP_DANCE(td_dash_forward,
+    tapping-term-ms = <200>;
+    bindings = <&kp W>, <&dash_forward>;
+)
 
-    behaviors {
-        dashUp: behavior = &tap_dance {
-            tapping-term-ms = <200>;
-            bindings = <&kp W>, <&macro_dash_forward>;
-        };
+ZMK_TAP_DANCE(td_dash_backward,
+    tapping-term-ms = <200>;
+    bindings = <&kp S>, <&dash_backward>;
+)
 
-        dashDown: behavior = &tap_dance {
-            tapping-term-ms = <200>;
-            bindings = <&kp S>, <&macro_dash_backward>;
-        };
+ZMK_TAP_DANCE(td_dash_left,
+    tapping-term-ms = <200>;
+    bindings = <&kp A>, <&dash_left>;
+)
 
-        dashLeft: behavior = &tap_dance {
-            tapping-term-ms = <200>;
-            bindings = <&kp A>, <&macro_dash_left>;
-        };
-
-        dashRight: behavior = &tap_dance {
-            tapping-term-ms = <200>;
-            bindings = <&kp D>, <&macro_dash_right>;
-        };
-    };
+ZMK_TAP_DANCE(td_dash_right,
+    tapping-term-ms = <200>;
+    bindings = <&kp D>, <&dash_right>;
+)
 
 
 
