@@ -166,6 +166,14 @@ ZMK_MOD_MORPH(smart_shft,
 
 // tap: num-word | double-tap: sticky num-layer | hold: num-layer
 #define SMART_NUM &smart_num RAISE 0
+behaviors {
+        num_word: num_word {
+            compatible = "zmk,behavior-num-word";
+            label = "NUM_WORD";
+            #binding-cells = <0>;
+        };
+};
+
 ZMK_HOLD_TAP(smart_num,
     flavor = "balanced";
     tapping-term-ms = <200>;
