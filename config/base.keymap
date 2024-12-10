@@ -117,8 +117,8 @@ ZMK_HOLD_TAP(thumb_key,
 /* GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE*/
 
 // tap: alt | hold: C
-#define ALT_C &thumb_key LALT C
-ZMK_HOLD_TAP(thumb_key,
+#define ALT_C &thumbb_key LALT C
+ZMK_HOLD_TAP(thumbb_key,
     flavor="tap-preferred";
     tapping-term-ms = <200>;
     quick-tap-ms = <200>;
@@ -126,42 +126,25 @@ ZMK_HOLD_TAP(thumb_key,
     bindings = <&kp>, <&kp>;
 )
 
-   
-ZMK_MACRO(dash_forward,
-    bindings = <&kp LALT>, <&kp W>;
-)
-
-ZMK_MACRO(dash_backward,
-    bindings = <&kp LALT>, <&kp S>;
-)
-
-ZMK_MACRO(dash_left,
-    bindings = <&kp LALT>, <&kp A>;
-)
-
-ZMK_MACRO(dash_right,
-    bindings = <&kp LALT>, <&kp D>;
-)
-
 
 ZMK_TAP_DANCE(td_dash_forward,
     tapping-term-ms = <200>;
-    bindings = <&kp W>, <&dash_forward>;
+    bindings = <&kp W>, <&kp LA(W)>;
 )
 
 ZMK_TAP_DANCE(td_dash_backward,
     tapping-term-ms = <200>;
-    bindings = <&kp S>, <&dash_backward>;
+    bindings = <&kp S>, <&kp LA(S)>;
 )
 
 ZMK_TAP_DANCE(td_dash_left,
     tapping-term-ms = <200>;
-    bindings = <&kp A>, <&dash_left>;
+    bindings = <&kp A>, <&kp LA(A)>;
 )
 
 ZMK_TAP_DANCE(td_dash_right,
     tapping-term-ms = <200>;
-    bindings = <&kp D>, <&dash_right>;
+    bindings = <&kp D>, <&kp LA(D)t>;
 )
 
 
