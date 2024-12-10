@@ -165,15 +165,15 @@ ZMK_MOD_MORPH(smart_shft,
 };
 
 // Define SMART_NUM behavior
-#define SMART_NUM &smart_num RAISE 0
+//#define SMART_NUM &smart_num RAISE 0
 
 // Balanced Hold-Tap for SMART_NUM
-ZMK_HOLD_TAP(smart_num,
-    flavor = "balanced";
-    tapping-term-ms = <200>;
-    quick-tap-ms = <QUICK_TAP_MS>;
-    bindings = <&mo>, <&num_dance>;
-)
+//ZMK_HOLD_TAP(smart_num,
+//    flavor = "balanced";
+//    tapping-term-ms = <200>;
+//    quick-tap-ms = <QUICK_TAP_MS>;
+//    bindings = <&mo>, <&num_dance>;
+//)
 
 // Tap-Dance for num_dance
 //ZMK_TAP_DANCE(num_dance,
@@ -182,10 +182,10 @@ ZMK_HOLD_TAP(smart_num,
 //)
 
 // num_word definition (requires PR #1451)
-&num_word {
-    layers = <RAISE>;
-    continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL>;
-};
+//&num_word {
+//    layers = <RAISE>;
+//    continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL>;
+//};
 
 // smart-mouse, requires PR #1366
 ZMK_TRI_STATE(smart_mouse,
