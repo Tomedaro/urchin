@@ -176,10 +176,10 @@ ZMK_HOLD_TAP(smart_num,
 )
 
 // Tap-Dance for num_dance
-ZMK_TAP_DANCE(num_dance,
-    tapping-term-ms = <200>;
-    bindings = <&num_word>, <&sl RAISE>;  // Reverse bindings if needed
-)
+//ZMK_TAP_DANCE(num_dance,
+//    tapping-term-ms = <200>;
+//    bindings = <&num_word>, <&sl RAISE>;  // Reverse bindings if needed
+//)
 
 // num_word definition (requires PR #1451)
 &num_word {
