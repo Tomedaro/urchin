@@ -123,18 +123,24 @@ ZMK_MOD_MORPH(smart_shft,
     /delete-property/ ignore-modifiers;
 };
 
-// tap: num-word | double-tap: sticky num-layer | hold: num-layer
-
-// Define the `num_word` behavior properly in the `behaviors` block
+// Behavior definitions
 behaviors {
     num_word: num_word {
         compatible = "zmk,behavior-num-word";
         label = "NUM_WORD";
-        #binding-cells = <0>; // No arguments expected in bindings like <&num_word>
+        #binding-cells = <0>; // No arguments expected
     };
 };
 
-// Define SMART_NUM using the hold-tap behavior
+// Tap Dance Definition
+ZMK_TAP_DANCE(num_dance,
+    tapping-term-ms = <200>;
+    bindings = <&num_word>, <&sl RAISE>;
+);
+
+// Hold-Tap Definition
+#define QUICK_TAP_MS 175
+#define RAISE 3
 #define SMART_NUM &smart_num RAISE 0
 
 ZMK_HOLD_TAP(smart_num,
@@ -144,11 +150,12 @@ ZMK_HOLD_TAP(smart_num,
     bindings = <&mo RAISE>, <&num_dance>;
 );
 
-// Define the tap-dance behavior for switching layers or states
-ZMK_TAP_DANCE(num_dance,
-    tapping-term-ms = <200>;
-    bindings = <&num_word>, <&sl RAISE>;
-);
+// Sticky Layer Definition
+&sl {
+    ignore-modifiers;
+    #binding-cells = <1>; // Allows passing a layer argument
+};
+
 
 
 // smart-mouse, requires PR #1366
