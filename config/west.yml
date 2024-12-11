@@ -1,13 +1,16 @@
+---
 manifest:
   defaults:
     remote: urob
-    revision: v0.1  # Update default revision to v0.1
+    revision: v0.1
 
   remotes:
     - name: upstream
       url-base: https://github.com/zmkfirmware
     - name: urob
       url-base: https://github.com/urob
+    - name: infely
+      url-base: https://github.com/infely
 
   projects:
     - name: zmk-auto-layer
@@ -15,13 +18,13 @@ manifest:
     - name: zmk-helpers
       path: modules/helpers
     - name: zmk-leader-key
-      revision: legacy  # Explicitly use the legacy branch for zmk-leader-key
       path: modules/leader-key
     - name: zmk-tri-state
       path: modules/tri-state
-
-    # ZMK with Zephyr namespaced under /zmk. This requires that ZMK imports
-    # Zephyr with a path other than `zephyr` (as in `going-modular`).
+    - name: nice-view-battery
+      remote: infely
+      revision: main
+      path: modules/nice-view-battery
     - name: zmk
       path: .
       import:
