@@ -135,10 +135,12 @@ ZMK_TAP_DANCE(num_dance,
     tapping-term-ms = <200>;
     bindings = <&num_word>, <&sl RAISE>;  // reverse this for sticky-num on single tap
 )
-&num_word {  // num-word, requires PR #1451
-    layers = <RAISE>;
-    continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL>;
+&num_word {
+    compatible = "zmk,behavior-num-word";
+    layers = <RAISE>;  // Applies to the RAISE layer
+    continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL>; // Key codes
 };
+
 
 // smart-mouse, requires PR #1366
 ZMK_TRI_STATE(smart_mouse,
