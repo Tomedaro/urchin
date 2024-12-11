@@ -14,7 +14,7 @@
 #define DEFAULT 0
 #define STURDY 1
 #define LOWER 2
-#define  3
+#define RAISE 3
 #define ADJUST 4
 #define UNICODE 5
 #define MOUSE 6
@@ -148,7 +148,7 @@ ZMK_TAP_DANCE(copy_cut,
 
 /* Keymap */
 
-ZMK_CONDITIONAL_LAYER(ADJ, LOWER RAISE, ADJUST)  // Lower + Raise --> Adjust
+ZMK_CONDITIONAL_LAYER(ADJ, LOWER , ADJUST)  // Lower +  --> Adjust
 
 ZMK_LAYER(colemak,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
