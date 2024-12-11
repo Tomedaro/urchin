@@ -141,6 +141,46 @@ ZMK_TAP_DANCE(copy_cut,
 // misc aliases
 #define CANCEL      &kp K_CANCEL             // cancel caps-word, num-word and smart-mouse
 
+
+/* GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE*/
+
+// tap: alt | hold: C
+#define ALT_C &thumb_key LALT C
+ZMK_HOLD_TAP(thumb_key,
+    flavor="tap-preferred";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <200>;
+    require-prior-idle-ms = <125>;
+    bindings = <&kp>, <&kp>;
+)
+
+
+ZMK_TAP_DANCE(td_dash_forward,
+    tapping-term-ms = <200>;
+    bindings = <&kp W>, <&kp LA(W)>;
+)
+
+ZMK_TAP_DANCE(td_dash_backward,
+    tapping-term-ms = <200>;
+    bindings = <&kp S>, <&kp LA(S)>;
+)
+
+ZMK_TAP_DANCE(td_dash_left,
+    tapping-term-ms = <200>;
+    bindings = <&kp A>, <&kp LA(A)>;
+)
+
+ZMK_TAP_DANCE(td_dash_right,
+    tapping-term-ms = <200>;
+    bindings = <&kp D>, <&kp LA(D)>;
+)
+
+
+
+/* GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE*/
+
+
+
 /* Keymap */
 
 ZMK_CONDITIONAL_LAYER(ADJ, LOWER , ADJUST)  // Lower +  --> Adjust
