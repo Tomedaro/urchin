@@ -180,6 +180,11 @@ ZMK_TAP_DANCE(dr,
 )
 
 
+// tap: ENTER | double-tap: ESC
+ZMK_TAP_DANCE(ret_esc,
+    tapping-term-ms = <200>;
+    bindings = <&kp RET>, <&kp ESC>;
+)
 
 /* GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE*/
 
