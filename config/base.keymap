@@ -124,22 +124,31 @@ ZMK_MOD_MORPH(smart_shft,
 };
 
 // tap: num-word | double-tap: sticky num-layer | hold: num-layer
+
+// Define the `num_word` behavior properly in the `behaviors` block
+behaviors {
+    num_word: num_word {
+        compatible = "zmk,behavior-num-word";
+        label = "NUM_WORD";
+        #binding-cells = <0>; // No arguments expected in bindings like <&num_word>
+    };
+};
+
+// Define SMART_NUM using the hold-tap behavior
 #define SMART_NUM &smart_num RAISE 0
+
 ZMK_HOLD_TAP(smart_num,
     flavor = "balanced";
     tapping-term-ms = <200>;
     quick-tap-ms = <QUICK_TAP_MS>;
-    bindings = <&mo>, <&num_dance>;
-)
-ZMK_TAP_DANCE(num_dance,    
+    bindings = <&mo RAISE>, <&num_dance>;
+);
+
+// Define the tap-dance behavior for switching layers or states
+ZMK_TAP_DANCE(num_dance,
     tapping-term-ms = <200>;
-    bindings = <&num_word>, <&sl RAISE>;  // reverse this for sticky-num on single tap
-)
-&num_word {
-    compatible = "zmk,behavior-num-word";
-    layers = <RAISE>;  // Applies to the RAISE layer
-    continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL>; // Key codes
-};
+    bindings = <&num_word>, <&sl RAISE>;
+);
 
 
 // smart-mouse, requires PR #1366
