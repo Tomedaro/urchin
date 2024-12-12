@@ -49,6 +49,12 @@
     quick-tap-ms = <QUICK_TAP_MS>;
 };
 
+&gt {  // layer-tap config
+    flavor = "balanced";
+    tapping-term-ms = <600>;
+    quick-tap-ms = <250>;
+};
+
 /* Homerow mods */
 
 #define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4  // left hand
@@ -160,22 +166,22 @@ ZMK_HOLD_TAP(thumb_key,
 
 
 ZMK_TAP_DANCE(df,
-    tapping-term-ms = <200>;
+    tapping-term-ms = <150>;
     bindings = <&kp W>, <&kp LA(W)>;
 )
 
 ZMK_TAP_DANCE(db,
-    tapping-term-ms = <200>;
+    tapping-term-ms = <174>;
     bindings = <&kp S>, <&kp LA(S)>;
 )
 
 ZMK_TAP_DANCE(dl,
-    tapping-term-ms = <200>;
+    tapping-term-ms = <125>;
     bindings = <&kp A>, <&kp LA(A)>;
 )
 
 ZMK_TAP_DANCE(dr,
-    tapping-term-ms = <200>;
+    tapping-term-ms = <165>;
     bindings = <&kp D>, <&kp LA(D)>;
 )
 
@@ -287,7 +293,7 @@ ZMK_LAYER(game,
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LB     &kp LCTRL     &kp Z         &kp X         &kp C         &kp V           X_MB     &kp N         &kp M         &kp COMMA     &kp DOT       &kp SLASH       X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
-    X_LH                                               &lt LMOD LALT  &lt RMOD SPACE  X_MH    &lt RAISE RET  &smart_shft                                               X_RH
+    X_LH                                               &gt LMOD LALT  &gt RMOD SPACE  X_MH    &lt RAISE RET  &smart_shft                                               X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
 
