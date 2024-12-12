@@ -149,14 +149,14 @@ ZMK_TAP_DANCE(copy_cut,
 /* GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE*/
 
 // tap: alt | hold: C
-#define ALT_C &thumb_key LALT C
-ZMK_HOLD_TAP(thumb_key,
-    flavor="tap-preferred";
-    tapping-term-ms = <200>;
-    quick-tap-ms = <200>;
-    require-prior-idle-ms = <125>;
-    bindings = <&kp>, <&kp>;
-)
+//#define ALT_C &thumb_key LALT C
+//ZMK_HOLD_TAP(thumb_key,
+//    flavor="tap-preferred";
+//    tapping-term-ms = <200>;
+//    quick-tap-ms = <200>;
+//    require-prior-idle-ms = <125>;
+//    bindings = <&kp>, <&kp>;
+//)
 
 
 ZMK_TAP_DANCE(df,
@@ -182,19 +182,9 @@ ZMK_TAP_DANCE(dr,
 
 // tap: ENTER | double-tap: ESC
 ZMK_TAP_DANCE(ret_esc,
-    tapping-term-ms = <200>;
+    tapping-term-ms = <20 0>;
     bindings = <&kp RET>, <&kp ESC>;
 )
-
- behaviors {
-        game_tap: behavior_layer_tap {
-            compatible = "zmk,layer-tap";
-            label = "Gaming Layer Tap";
-            flavor = "balanced";
-            tapping-term-ms = <600>;
-            quick-tap-ms = <250>;
-        };
-    };
 
 /* GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE*/
 
@@ -297,7 +287,7 @@ ZMK_LAYER(game,
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LB     &kp LCTRL     &kp Z         &kp X         &kp C         &kp V           X_MB     &kp N         &kp M         &kp COMMA     &kp DOT       &kp SLASH       X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
-    X_LH                                  &game_tap LMOD LALT  &game_tap RMOD SPACE  X_MH    &lt RAISE RET  &smart_shft                                               X_RH
+    X_LH                                              &lt LMOD LALT  &lt RMOD SPACE  X_MH    &lt RAISE RET  &smart_shft                                               X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
 
