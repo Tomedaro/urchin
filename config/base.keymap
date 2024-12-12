@@ -192,7 +192,7 @@ ZMK_TAP_DANCE(ret_esc,
 
 /* Keymap */
 
-ZMK_CONDITIONAL_LAYER(ADJ, LOWER , ADJUST)  // Lower +  --> Adjust
+ZMK_CONDITIONAL_LAYER(LOWER, RAISE, ADJUST)  // Lower +  --> Adjust
 
 ZMK_LAYER(colemak,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
