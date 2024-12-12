@@ -187,7 +187,7 @@ ZMK_TAP_DANCE(ret_esc,
 )
 
  behaviors {
-        gt: behavior_layer_tap {
+        game_tap: behavior_layer_tap {
             compatible = "zmk,layer-tap";
             label = "Gaming Layer Tap";
             flavor = "balanced";
@@ -297,7 +297,7 @@ ZMK_LAYER(game,
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
     X_LB     &kp LCTRL     &kp Z         &kp X         &kp C         &kp V           X_MB     &kp N         &kp M         &kp COMMA     &kp DOT       &kp SLASH       X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
-    X_LH                                               &gt LMOD LALT  &gt RMOD SPACE  X_MH    &lt RAISE RET  &smart_shft                                               X_RH
+    X_LH                                  &game_tap LMOD LALT  &game_tap RMOD SPACE  X_MH    &lt RAISE RET  &smart_shft                                               X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
 
