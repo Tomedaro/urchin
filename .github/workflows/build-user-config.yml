@@ -111,13 +111,14 @@ jobs:
       - name: Rename artifacts
         shell: bash
         run: |
-          mkdir -p "build/artifacts/${{ matrix.shield }}"
+          artifact_dir="build/artifacts/${{ matrix.shield }}"
+          mkdir -p "${artifact_dir}"
           if [ -f build/zephyr/zmk.uf2 ]
           then
-            cp build/zephyr/zmk.uf2 "build/artifacts/${{ matrix.shield }}/${{ env.artifact_name }}.uf2"
+            cp build/zephyr/zmk.uf2 "${artifact_dir}/${{ env.artifact_name }}.uf2"
           elif [ -f build/zephyr/zmk.${{ inputs.fallback_binary }} ]
           then
-            cp build/zephyr/zmk.${{ inputs.fallback_binary }} "build/artifacts/${{ matrix.shield }}/${{ env.artifact_name }}.${{ inputs.fallback_binary }}"
+            cp build/zephyr/zmk.${{ inputs.fallback_binary }} "${artifact_dir}/${{ env.artifact_name }}.${{ inputs.fallback_binary }}"
           fi
 
       - name: Combine artifacts for archive
