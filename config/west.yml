@@ -1,7 +1,7 @@
 manifest:
   defaults:
     remote: urob
-    revision: v0.1
+    revision: v0.1+mouse
 
   remotes:
     - name: upstream
