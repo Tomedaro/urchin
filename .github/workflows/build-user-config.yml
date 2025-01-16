@@ -55,7 +55,7 @@ jobs:
       matrix: ${{ fromJson(needs.matrix.outputs.build_matrix) }}
     steps:
       - name: Prepare variables
-        shell: sh -x {0}
+        shell: bash
         run: |
           if [ -n "${{ matrix.shield }}" ]
           then
@@ -102,16 +102,16 @@ jobs:
         run: west zephyr-export
 
       - name: West Build (${{ env.display_name }})
-        shell: sh -x {0}
+        shell: bash
         run: west build -s zmk/app -b ${{ matrix.board }} -- -DZMK_CONFIG=${GITHUB_WORKSPACE}/${{ inputs.config_path }} ${{ env.extra_cmake_args }} ${{ matrix.cmake-args }}
 
       - name: ${{ env.display_name }} Kconfig file
         run: grep -v -e "^#" -e "^$" build/zephyr/.config | sort
 
       - name: Rename artifacts
-        shell: sh -x {0}
+        shell: bash
         run: |
-          mkdir -p build/artifacts/${{ matrix.shield }}
+          mkdir -p "build/artifacts/${{ matrix.shield }}"
           if [ -f build/zephyr/zmk.uf2 ]
           then
             cp build/zephyr/zmk.uf2 "build/artifacts/${{ matrix.shield }}/${{ env.artifact_name }}.uf2"
@@ -121,10 +121,10 @@ jobs:
           fi
 
       - name: Combine artifacts for archive
-        shell: sh -x {0}
+        shell: bash
         run: |
           mkdir -p build/combined
-          find build/artifacts -type f -name "*.uf2" -exec cp {} build/combined/ \;
+          find build/artifacts -type f -name "*.uf2" -exec cp "{}" build/combined/ \;
 
       - name: Archive all firmware
         uses: actions/upload-artifact@v4
