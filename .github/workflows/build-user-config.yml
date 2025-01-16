@@ -111,20 +111,20 @@ jobs:
       - name: Rename artifacts
         shell: sh -x {0}
         run: |
-          mkdir -p build/artifacts
+          mkdir -p build/artifacts/${{ matrix.shield }}
           if [ -f build/zephyr/zmk.uf2 ]
           then
-            cp build/zephyr/zmk.uf2 "build/artifacts/${{ env.artifact_name }}.uf2"
+            cp build/zephyr/zmk.uf2 "build/artifacts/${{ matrix.shield }}/${{ env.artifact_name }}.uf2"
           elif [ -f build/zephyr/zmk.${{ inputs.fallback_binary }} ]
           then
-            cp build/zephyr/zmk.${{ inputs.fallback_binary }} "build/artifacts/${{ env.artifact_name }}.${{ inputs.fallback_binary }}"
+            cp build/zephyr/zmk.${{ inputs.fallback_binary }} "build/artifacts/${{ matrix.shield }}/${{ env.artifact_name }}.${{ inputs.fallback_binary }}"
           fi
 
       - name: Combine artifacts for archive
         shell: sh -x {0}
         run: |
           mkdir -p build/combined
-          cp build/artifacts/* build/combined/
+          find build/artifacts -type f -name "*.uf2" -exec cp {} build/combined/ \;
 
       - name: Archive all firmware
         uses: actions/upload-artifact@v4
