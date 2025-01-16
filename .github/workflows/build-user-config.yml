@@ -19,8 +19,8 @@ on:
         required: false
         type: string
       archive_name:
-        description: "Archive output file name"
-        default: "firmware.zip"
+        description: 'Archive output file name'
+        default: 'firmware'
         required: false
         type: string
 
@@ -57,7 +57,8 @@ jobs:
       - name: Prepare variables
         shell: sh -x {0}
         run: |
-          if [ -n "${{ matrix.shield }}" ]; then
+          if [ -n "${{ matrix.shield }}" ]
+          then
             echo "extra_cmake_args=-DSHIELD=\"${{ matrix.shield }}\"" >> $GITHUB_ENV
             echo "artifact_name=${{ matrix.shield }}-${{ matrix.board }}-zmk" >> $GITHUB_ENV
             echo "display_name=${{ matrix.shield }} - ${{ matrix.board }}" >> $GITHUB_ENV
@@ -74,7 +75,7 @@ jobs:
           submodules: recursive
 
       - name: Cache west modules
-        uses: actions/cache@v3.0.11
+        uses: actions/cache@v3
         continue-on-error: true
         env:
           cache_name: cache-zephyr-${{ env.zephyr_version }}-modules
@@ -111,21 +112,23 @@ jobs:
         shell: sh -x {0}
         run: |
           mkdir -p build/artifacts
-          if [ -f build/zephyr/zmk.uf2 ]; then
+          if [ -f build/zephyr/zmk.uf2 ]
+          then
             cp build/zephyr/zmk.uf2 "build/artifacts/${{ env.artifact_name }}.uf2"
-          elif [ -f build/zephyr/zmk.${{ inputs.fallback_binary }} ]; then
+          elif [ -f build/zephyr/zmk.${{ inputs.fallback_binary }} ]
+          then
             cp build/zephyr/zmk.${{ inputs.fallback_binary }} "build/artifacts/${{ env.artifact_name }}.${{ inputs.fallback_binary }}"
           fi
 
-      - name: Combine artifacts into a single archive
+      - name: Combine artifacts for archive
+        shell: sh -x {0}
         run: |
           mkdir -p build/combined
-          cp build/artifacts/* build/combined/ || true
-          zip -j build/combined/${{ inputs.archive_name }} build/combined/*
+          cp build/artifacts/* build/combined/
 
       - name: Archive all firmware
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ inputs.archive_name }}
+          name: firmware
           path: build/combined
           overwrite: true
