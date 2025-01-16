@@ -113,7 +113,7 @@ ZMK_HOLD_TAP(thumb_key,
     tapping-term-ms = <200>;
     quick-tap-ms = <200>;
     require-prior-idle-ms = <125>;
-    bindings = <&kp>, <&kp>;
+    bindings = <&kp SPACE>, <&kp LCTRL>;
 )
 
 
@@ -146,33 +146,37 @@ ZMK_TAP_DANCE(copy_cut,
 
 
 /* GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE*/
-
-// Define a custom hold-tap behavior for ALT+C (tap: TAB | hold: J)
+// tap: TAB | hold: J
+#define TAB_J &tab_j TAB J
 ZMK_HOLD_TAP(tab_j,
     flavor="hold-preferred"; // Hold-preferred for faster responsiveness in fast-paced gameplay
     tapping-term-ms = <150>; // Shortened tapping term for quicker activation
     quick-tap-ms = <100>; // Reduced quick-tap for faster actions
     require-prior-idle-ms = <100>; // Reduced idle time to prioritize responsiveness
-    bindings = <&kp TAB>, <&kp J>;
+    bindings = <&kp>, <&kp>;
 )
 
-// Define a custom hold-tap behavior for CAPS (tap: CAPS | hold: K)
+// tap: CAPS | hold: K
+#define CAPS_K &caps_k CAPS K
 ZMK_HOLD_TAP(caps_k,
     flavor="hold-preferred"; // Hold-preferred for consistent fast gameplay
     tapping-term-ms = <150>;
     quick-tap-ms = <100>;
     require-prior-idle-ms = <100>;
-    bindings = <&kp CAPS>, <&kp K>;
+    bindings = <&kp>, <&kp>;
 )
 
-// Define a custom hold-tap behavior for LSHFT (tap: LSHFT | hold: L)
+// tap: LSHFT | hold: L
+#define LSHFT_L &lshft_l LSHFT L
 ZMK_HOLD_TAP(lshft_l,
     flavor="hold-preferred";
     tapping-term-ms = <150>;
     quick-tap-ms = <100>;
     require-prior-idle-ms = <100>;
-    bindings = <&kp LSHFT>, <&kp L>;
+    bindings = <&kp>, <&kp>;
 )
+
+
 
 /*
 ZMK_TAP_DANCE(df,
@@ -180,12 +184,6 @@ ZMK_TAP_DANCE(df,
     bindings = <&kp W>, <&kp LA(W)>;
 )
 */
-
-// tap: ENTER | double-tap: ESC
-ZMK_TAP_DANCE(ret_esc,
-    tapping-term-ms = <200>;
-    bindings = <&kp RET>, <&kp ESC>;
-)
 
 /* GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE GAME MODE*/
 
@@ -282,11 +280,11 @@ ZMK_LAYER(mouse,
 
 ZMK_LAYER(game,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-    X_LT     &tab_j        &kp Q         &kp W         &kp E         &kp R           X_MT     &kp Y         &kp U         &kp I         &kp O         &kp P           X_RT
+    X_LT     TAB_J         &kp Q         &kp W         &kp E         &kp R           X_MT     &kp Y         &kp U         &kp I         &kp O         &kp P           X_RT
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LM     &caps_k       &kp A         &kp S         &kp D         &kp F           X_MM     &hmr RALT H   &hmr RCTRL J  &hmr RSHFT K  &hmr LALT L   &hmr RGUI SEMICOLON  X_RM
+    X_LM     CAPS_K        &kp A         &kp S         &kp D         &kp F           X_MM     &hmr RALT H   &hmr RCTRL J  &hmr RSHFT K  &hmr LALT L   &hmr RGUI SEMICOLON  X_RM
 //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-    X_LB     &lshft_l      &kp Z         &kp X         &kp C         &kp V           X_MB     &kp N         &kp M         &kp COMMA     &kp DOT       &kp SLASH       X_RB
+    X_LB     LSHFT_J       &kp Z         &kp X         &kp C         &kp V           X_MB     &kp N         &kp M         &kp COMMA     &kp DOT       &kp SLASH       X_RB
 //├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
     X_LH                                               &kp LALT      &lt LMOD SPACE  X_MH    &lt RAISE RET  &smart_shft                                               X_RH
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
