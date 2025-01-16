@@ -1,4 +1,3 @@
----
 manifest:
   defaults:
     remote: urob
@@ -25,6 +24,18 @@ manifest:
       remote: infely
       revision: main
       path: modules/nice-view-battery
+    - name: zephyr
+      remote: upstream
+      revision: v3.5.0+zmk-fixes
+      clone-depth: 1
+      import:
+        name-allowlist:
+          - cmsis
+          - hal_nordic
+          - hal_rpi_pico
+          - hal_stm32
+          - lvgl
+          - tinycrypt
     - name: zmk
       path: .
       import:
